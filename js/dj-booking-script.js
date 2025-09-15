@@ -505,8 +505,18 @@ document.getElementById('modalForm').addEventListener('submit', function(e) {
             const responseData = await response.json();
 
             if (response.ok) {
-                // Redirect on success
-                window.location.href = "https://bookmydjs.in/matches/";
+            // List of possible redirect URLs
+            const redirectUrls = [
+                "https://bookmydjs.github.io/BMD3/matches/",
+                "https://bookmydjs.github.io/BMD3/thank-you/",
+                "https://bookmydjs.github.io/BMD3/success/"
+            ];
+
+            // Pick a random one (equal probability)
+            const randomUrl = redirectUrls[Math.floor(Math.random() * redirectUrls.length)];
+
+            // Redirect on success
+            window.location.href = randomUrl;
             } else {
                 throw new Error(responseData.message || 'Form submission failed');
             }
@@ -809,4 +819,5 @@ function scrollToHero() {
 function handleClose() {
 showConfirmModal();   
 }
+
 
