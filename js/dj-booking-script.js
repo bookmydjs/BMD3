@@ -487,43 +487,47 @@ document.getElementById('modalForm').addEventListener('submit', function(e) {
         }
     });
 
-    // Log form data before sending
-    console.log('Sending form data:');
-    for (let pair of formData.entries()) {
-        console.log(pair[0] + ': ' + pair[1]);
-    }
+ // Log form data before sending
+console.log('Sending form data:');
+for (let pair of formData.entries()) {
+    console.log(pair[0] + ': ' + pair[1]);
+}
 
-    fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(Object.fromEntries(formData))
-        })
-        .then(async (response) => {
-            const responseData = await response.json();
+fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(Object.fromEntries(formData))
+    })
+    .then(async (response) => {
+        const responseData = await response.json();
 
-            if (response.ok) {
-                // Redirect on success
-                window.location.href = "https://bookmydjs.in/matches/";
-            } else {
-                throw new Error(responseData.message || 'Form submission failed');
-            }
-        })
-        .catch((error) => {
-            console.error("Form submission error:", {
-                message: error.message,
-                stack: error.stack
-            });
-            alert("Error submitting form: " + error.message);
+        if (response.ok) {
+            // List of possible redirect URLs
+            const redirectUrls = [
+                "https://bookmydjs.github.io/BMD3/matches/",
+                "https://bookmydjs.github.io/BMD3/thank-you/",
+                "https://bookmydjs.github.io/BMD3/success/"
+            ];
 
-            // Reset button state on error
-            submitButton.classList.remove('loading');
-            submitButton.disabled = false;
+            // Pick a random one (equal probability)
+            const randomUrl = redirectUrls[Math.floor(Math.random() * redirectUrls.length)];
+
+            // Redirect on success
+            window.location.href = randomUrl;
+        } else {
+            throw new Error(responseData.message || 'Form submission failed');
+        }
+    })
+    .catch((error) => {
+        console.error("Form submission error:", {
+            message: error.message,
+            stack: error.stack
         });
-});
-
+        alert("Error submitting form: " + error.message);
+    });
 // Add these new functions
 function showModal() {
     const location = document.getElementById('location').value.trim();
@@ -809,4 +813,5 @@ function scrollToHero() {
 function handleClose() {
 showConfirmModal();   
 }
+
 
