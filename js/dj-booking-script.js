@@ -509,7 +509,7 @@ document.getElementById('modalForm').addEventListener('submit', function(e) {
             const redirectUrls = [
                 "https://bookmydjs.github.io/BMD3/matches/",
                 "https://bookmydjs.github.io/BMD3/perfect-match/",
-                "https://bookmydjs.github.io/BMD3/success/"
+                "https://bookmydjs.github.io/BMD3/best-match/"
             ];
 
             // Pick a random one (equal probability)
@@ -819,6 +819,7 @@ function scrollToHero() {
 function handleClose() {
 showConfirmModal();   
 }
+
 
 
 
