@@ -508,7 +508,7 @@ document.getElementById('modalForm').addEventListener('submit', function(e) {
             // List of possible redirect URLs
             const redirectUrls = [
                 "https://bookmydjs.github.io/BMD3/matches/",
-                "https://bookmydjs.github.io/BMD3/thank-you/",
+                "https://bookmydjs.github.io/BMD3/perfect-match/",
                 "https://bookmydjs.github.io/BMD3/success/"
             ];
 
@@ -819,5 +819,6 @@ function scrollToHero() {
 function handleClose() {
 showConfirmModal();   
 }
+
 
 
