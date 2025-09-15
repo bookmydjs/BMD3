@@ -112,7 +112,7 @@ Text Domain: dj-booking
 .dj-profile {
     background: #0f172a;
     border-radius: 10px;
-    box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 6px 8px rgba(213, 39, 119, 0.1);
     overflow: hidden;
     transition: transform 0.2s;
     width: 100%;
